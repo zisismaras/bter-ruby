@@ -4,11 +4,7 @@ Install with
 ```ruby
 gem install bter-ruby
 ```
-then run
-```ruby
-bundle install
-```
-and finally require in your project
+and then require in your project
 ```ruby
 require 'bter'
 ```
