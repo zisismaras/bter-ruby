@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.description = "Ruby api for the bter.com cryptocurrency exchange"
   s.authors     = ["Zisis Maras"]
   s.email       = 'zisismaras@gmail.com'
-  s.files       = ["lib/bter.rb", "lib/bter/public.rb", "lib/bter/trading.rb", "lib/bter/request_logger.rb"]
+  s.files       = ["lib/bter.rb", "lib/bter/public.rb", "lib/bter/trading.rb", "lib/bter/request_logger.rb", "LICENSE", "README.md" , "Gemfile"]
   s.homepage    =
-    ''
+    'https://github.com/zisismaras/bter-ruby'
   s.license       = 'MIT'
 end
