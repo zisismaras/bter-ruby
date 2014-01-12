@@ -1,7 +1,0 @@
-require_relative 'public.rb'
-require_relative 'trading.rb'
-require_relative 'error.rb'
-
-module Bter
-  
-end
