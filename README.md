@@ -37,9 +37,8 @@ bt.buy(pair, amount)
 bt.sell(pair, amount)
 ```
 
-Logging
 You can enable the logger for public and trading requests.
-It logs successful or failed requests and response info.
+It logs successful or failed requests and response info.(off by default)
 ```ruby
 bt = Bter::Public.new
 bt.logging :on
