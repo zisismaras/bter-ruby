@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'bter-ruby'
-  s.version     = '0.0.1'
-  s.date        = '2014-01-12'
+  s.version     = '0.0.2'
+  s.date        = '2014-01-17'
   s.summary     = "bter.com ruby api"
   s.description = "Ruby api for the bter.com cryptocurrency exchange"
   s.authors     = ["Zisis Maras"]
