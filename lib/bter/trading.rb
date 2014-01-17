@@ -3,6 +3,16 @@ module Bter
   class Trade
   
     attr_accessor :key, :secret
+    
+    def initialize
+      @logging = false
+    end
+    
+    def logging(p)
+      if p == :on
+        @logging = true
+      end
+    end
         
     def trade_request(method, params=nil)
       if params.nil?
@@ -19,12 +29,16 @@ module Bter
         body: @params,
         headers: { Key: @key, Sign: sign }
         )
-        Request_logger.new.error_log(request)
+        if @logging
+          RequestLogger.error_log(request)
+        end
         hydra = Typhoeus::Hydra.hydra
         hydra.queue(request)
         hydra.run
         response = request.response
-        Request_logger.new.info_log(response.code, response.total_time, response.headers_hash)
+        if @logging
+          RequestLogger.info_log(response.code, response.total_time, response.headers_hash)
+        end
         response.body
     end
     
@@ -71,7 +85,7 @@ module Bter
     end
     
     def get_rate(pair)
-      ticker(pair).values_at(:last).flatten
+      Public.new.ticker(pair).values_at(:last).flatten
     end
     
   end

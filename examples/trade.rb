@@ -1,10 +1,13 @@
-require 'bter-ruby'
+require 'bter'
 
 bt = Bter::Trade.new
 
 #supply your key and secret
-bter.key = "my key"
-bter.secret = "my secret"
+bt.key = "my key"
+bt.secret = "my secret"
+
+#enable logging , off by default
+bt.logging :on
 
 #your funds
 puts bt.get_info

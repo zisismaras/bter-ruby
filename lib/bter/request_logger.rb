@@ -1,7 +1,8 @@
 require 'logger'
 
 module Bter
-  class Request_logger
+  module RequestLogger
+    extend self
   
     def error_log(request)
       logger = Logger.new('logfile.log')

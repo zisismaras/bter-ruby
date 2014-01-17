@@ -5,6 +5,9 @@ require 'bter'
 
 bt = Bter::Public.new
 
+#enable logging , off by default
+bt.logging :on
+
 puts bt.ticker("btc_cny")
 
 puts bt.depth("btc_cny")
