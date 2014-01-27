@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    bter-ruby (0.0.2)
+      json
+      logger
+      typhoeus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -15,6 +23,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
-  logger
-  typhoeus
+  bter-ruby!

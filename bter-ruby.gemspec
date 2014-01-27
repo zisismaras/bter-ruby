@@ -10,4 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    =
     'https://github.com/zisismaras/bter-ruby'
   s.license       = 'MIT'
+
+  s.add_dependency "json"
+  s.add_dependency "typhoeus"
+  s.add_dependency "logger"
 end
