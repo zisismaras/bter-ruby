@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    bter-ruby (0.0.2)
-      json
-      logger
-      typhoeus
+    bter-ruby (0.0.3)
+      json (~> 1.8, >= 1.8.1)
+      logger (~> 1.2, >= 1.2.8)
+      typhoeus (~> 0.6, >= 0.6.7)
 
 GEM
   remote: https://rubygems.org/
