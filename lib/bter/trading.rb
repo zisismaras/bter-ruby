@@ -64,14 +64,14 @@ module Bter
     end
     
     #abstract the trade to buy and sell
-    def buy(pair, amount)
-      pair_rate = get_rate(pair)
-      trade({:pair => pair, :type => "BUY", :rate => pair_rate, :amount => amount})
+    def buy(pair, amount, rate=nil)
+      rate ||= get_rate(pair)
+      trade({:pair => pair, :type => "BUY", :rate => rate, :amount => amount})
     end
     
-    def sell(pair, amount)
-      pair_rate = get_rate(pair)
-      trade({:pair => pair, :type => "SELL", :rate => pair_rate, :amount => amount})
+    def sell(pair, amount, rate=nil)
+      rate ||= get_rate(pair)
+      trade({:pair => pair, :type => "SELL", :rate => rate, :amount => amount})
     end
     
     def order_status(order_id)
