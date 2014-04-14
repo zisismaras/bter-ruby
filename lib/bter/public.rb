@@ -1,4 +1,3 @@
-
 module Bter
   class Public
   
@@ -13,7 +12,7 @@ module Bter
     end
   
     def public_request(method, pair)
-      request = Typhoeus::Request.new("https://bter.com/api/1/#{method}/#{pair}")
+      request = Typhoeus::Request.new("https://data.bter.com/api/1/#{method}/#{pair}")
       if @logging
         RequestLogger.error_log(request)
       end
