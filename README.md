@@ -33,8 +33,10 @@ bt.get_info
 bt.active_orders
 bt.order_status(order_id)
 bt.cancel_order(order_id)
-bt.buy(pair, amount)
-bt.sell(pair, amount)
+bt.buy(pair, amount, rate)
+bt.sell(pair, amount, rate)
+
+rate parameter is optional on buy and sell methods.
 ```
 
 You can enable the logger for public and trading requests.
