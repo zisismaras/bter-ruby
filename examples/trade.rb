@@ -6,9 +6,6 @@ bt = Bter::Trade.new
 bt.key = "my key"
 bt.secret = "my secret"
 
-#enable logging , off by default
-bt.logging :on
-
 #your funds
 puts bt.get_info
 
