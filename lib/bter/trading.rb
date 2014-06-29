@@ -3,17 +3,7 @@ module Bter
   class Trade
   
     attr_accessor :key, :secret
-    
-    def initialize
-      @logging = false
-    end
-    
-    def logging(p)
-      if p == :on
-        @logging = true
-      end
-    end
-        
+         
     def trade_request(method, params=nil)
       if params.nil?
         @params = {:method => method}
@@ -29,16 +19,10 @@ module Bter
         body: @params,
         headers: { Key: @key, Sign: sign }
         )
-        if @logging
-          RequestLogger.error_log(request)
-        end
         hydra = Typhoeus::Hydra.hydra
         hydra.queue(request)
         hydra.run
         response = request.response
-        if @logging
-          RequestLogger.info_log(response.code, response.total_time, response.headers_hash)
-        end
         response.body
     end
     
