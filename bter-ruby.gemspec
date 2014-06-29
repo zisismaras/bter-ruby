@@ -12,6 +12,5 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
 
   s.add_dependency "json", '~> 1.8', '>= 1.8.1'
-  s.add_dependency "typhoeus", '~> 0.6', '>= 0.6.8'
-  s.add_dependency "logger", '~> 1.2', '>= 1.2.8'
+  s.add_dependency "httparty", '~> 0.13', '>= 0.13.1'
 end

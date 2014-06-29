@@ -1,36 +1,10 @@
+require_relative 'request.rb'
 
 module Bter
   class Trade
+    include Request
   
     attr_accessor :key, :secret
-         
-    def trade_request(method, params=nil)
-      if params.nil?
-        @params = {:method => method}
-      else
-        @params = {:method => method}
-        params.each do |param|
-          @params.merge!(param)
-        end
-      end
-      request = Typhoeus::Request.new(
-        "https://bter.com/api/1/private/#{method}",
-        method: :post,
-        body: @params,
-        headers: { Key: @key, Sign: sign }
-        )
-        hydra = Typhoeus::Hydra.hydra
-        hydra.queue(request)
-        hydra.run
-        response = request.response
-        response.body
-    end
-    
-    def sign
-      hmac = OpenSSL::HMAC.new(@secret,OpenSSL::Digest::SHA512.new)
-      @params = @params.collect {|k,v| "#{k}=#{v}"}.join('&')
-      signed = hmac.update @params      
-    end
        
     def get_info    
       query = trade_request "getfunds"
