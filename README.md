@@ -10,16 +10,20 @@ require 'bter'
 ```
 The library has two parts , one for the public api and one for the trading one.
 
-The public api has 3 methods which return the ticker , market depth 
-and current trades for a given pair(check bter for the available pairs)
+The public api has the following methods
 
 ```ruby
 bt = Bter::Public.new
-
-puts bt.ticker("btc_cny")
-puts bt.depth("btc_cny")
-puts bt.trades("btc_cny")
+bt.tickers
+bt.ticker("btc_cny")
+bt.depth("btc_cny")
+bt.info
+bt.details
+bt.trades("btc_cny", tid) # alias .history
 ```
+tid parameter is optional on trades method and if omitted will return the most recent 80 trade history records.
+
+
 To use the trading api , you need to supply your key and secret
 ```ruby
 bt = Bter::Trade.new
@@ -31,24 +35,13 @@ Then you can use the available methods:
 ```ruby
 bt.get_info
 bt.active_orders
+bt.my_trades
 bt.order_status(order_id)
 bt.cancel_order(order_id)
 bt.buy(pair, amount, rate)
 bt.sell(pair, amount, rate)
 ```
-
-rate parameter is optional on buy and sell methods.
-
-
-You can enable the logger for public and trading requests.
-It logs successful or failed requests and response info.(off by default)
-```ruby
-bt = Bter::Public.new
-bt.logging :on
-
-bt2 = Bter::Trade.new
-bt2.logging :on
-```
+rate parameter is optional on buy and sell methods and if omitted the current rate will be used.
 
 
 Also check the two examples in the examples folder.
