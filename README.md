@@ -14,6 +14,7 @@ The public api has the following methods
 
 ```ruby
 bt = Bter::Public.new
+bt.pairs
 bt.tickers
 bt.ticker("btc_cny")
 bt.depth("btc_cny")
@@ -35,7 +36,7 @@ Then you can use the available methods:
 ```ruby
 bt.get_info
 bt.active_orders
-bt.my_trades
+bt.my_trades(pair)
 bt.order_status(order_id)
 bt.cancel_order(order_id)
 bt.buy(pair, amount, rate)
