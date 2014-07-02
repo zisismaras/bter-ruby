@@ -42,10 +42,6 @@ module Bter
       JSON.parse(query, {:symbolize_names => true})
     end
     
-    def get_rate(pair)
-      Public.new.ticker(pair).values_at(:last).flatten.first
-    end
-    
     #soon to be removed
     def logging(log)
       raise "Logger is no longer available , please remove it"
@@ -55,6 +51,10 @@ module Bter
     def trade(*params)
       query = trade_request("placeorder", params)
       JSON.parse(query, {:symbolize_names => true})
+    end
+
+    def get_rate(pair)
+      Public.new.ticker(pair).values_at(:last).flatten.first
     end
     
   end
