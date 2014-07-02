@@ -2,31 +2,34 @@ require_relative 'request.rb'
 
 module Bter
   class Public
-    include Request
-    
+    include Request    
     def ticker(pair)
-      query = public_request "ticker", pair
-      JSON.parse query, {:symbolize_names => true}  
+      query = public_request("ticker", pair)
+      JSON.parse(query, {:symbolize_names => true}) 
     end
     
     def depth(pair)
-      query = public_request "depth", pair
-      JSON.parse query, {:symbolize_names => true}   
+      query = public_request("depth", pair)
+      JSON.parse(query, {:symbolize_names => true})   
     end
 
     def info
-      query = public_request "marketinfo"
-      JSON.parse query, {:symbolize_names => true}   
+      query = public_request("marketinfo")
+      JSON.parse(query, {:symbolize_names => true})  
     end
 
     def details
-      query = public_request "markelist"
-      JSON.parse query, {:symbolize_names => true}   
+      query = public_request("markelist")
+      JSON.parse(query, {:symbolize_names => true}) 
     end  
-    def trades(pair, tid=nil)
-      tid ||= ""
-      query = public_request "trade", pair + "/#{tid}"
-      JSON.parse query, {:symbolize_names => true}   
+
+    def trades(pair, tid='')
+      query = public_request("trade", pair + "/#{tid}")
+      JSON.parse(query, {:symbolize_names => true})   
     end 
+    
+    def logging(log)
+      raise "Logger is no longer available , please remove it"
+    end
   end
 end
