@@ -5,7 +5,8 @@ module Bter
   	TRADE_URL  = 'https://bter.com/api/1/private'
 
     private
-    def public_request(method, pair='')
+    def public_request(method, pair='', tid=nil)
+      pair = pair + "/#{tid}" if tid.nil? == false
       HTTParty.get("#{PUBLIC_URL}/#{method}/#{pair}").body
     end
 
