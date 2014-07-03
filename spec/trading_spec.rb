@@ -133,7 +133,7 @@ describe Bter::Trade do
   describe :get_rate do
   	it "should be a number" do
   	  pair = @pairs.sample
-  	  expect(@bt.send(:get_rate, pair)).to be > 0
+  	  expect(@bt.send(:get_rate, pair).to_f).to be > 0
   	end
   end
 
