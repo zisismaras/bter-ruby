@@ -4,6 +4,7 @@ module Bter
   	PUBLIC_URL = 'https://data.bter.com/api/1'
   	TRADE_URL  = 'https://bter.com/api/1/private'
 
+    private
     def public_request(method, pair='')
       HTTParty.get("#{PUBLIC_URL}/#{method}/#{pair}").body
     end

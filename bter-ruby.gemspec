@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
     'https://github.com/zisismaras/bter-ruby'
   s.license       = 'MIT'
 
-  s.add_dependency "json", '~> 1.8', '>= 1.8.1'
-  s.add_dependency "httparty", '~> 0.13', '>= 0.13.1'
+  s.add_runtime_dependency "json", '~> 1.8', '>= 1.8.1'
+  s.add_runtime_dependency "httparty", '~> 0.13', '>= 0.13.1'
+  s.add_development_dependency "rspec", '~> 3.0', '>= 3.0.0'
 end
