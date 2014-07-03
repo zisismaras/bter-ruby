@@ -1,3 +1,4 @@
+# Bter-Ruby [![Build Status](https://travis-ci.org/zisismaras/bter-ruby.svg?branch=master)](https://travis-ci.org/zisismaras/bter-ruby)[![Gem Version](https://badge.fury.io/rb/bter-ruby.svg)](http://badge.fury.io/rb/bter-ruby)
 Ruby api for the bter.com cryptocurrency exchange
 
 Install with
@@ -16,11 +17,11 @@ The public api has the following methods
 bt = Bter::Public.new
 bt.pairs
 bt.tickers
-bt.ticker("btc_cny")
-bt.depth("btc_cny")
+bt.ticker(pair)
+bt.depth(pair)
 bt.info
 bt.details
-bt.trades("btc_cny", tid) # alias .history
+bt.trades(pair, tid) # alias .history
 ```
 tid parameter is optional on trades method and if omitted will return the most recent 80 trade history records.
 
@@ -46,6 +47,14 @@ rate parameter is optional on buy and sell methods and if omitted the current ra
 
 
 Also check the two examples in the examples folder.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 Licensed under MIT.
 
