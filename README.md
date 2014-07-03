@@ -48,6 +48,14 @@ rate parameter is optional on buy and sell methods and if omitted the current ra
 
 Also check the two examples in the examples folder.
 
+Tested on:
+
+MRI 2.1.1
+MRI 2.1.0
+MRI 2.0
+MRI 1.93
+Rubinius 2.2.6
+
 ## Contributing
 
 1. Fork it
