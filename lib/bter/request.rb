@@ -7,7 +7,8 @@ module Bter
     private
     def public_request(method, pair='', tid=nil)
       pair = pair + "/#{tid}" if tid.nil? == false
-      HTTParty.get("#{PUBLIC_URL}/#{method}/#{pair}").body
+      response = HTTParty.get("#{PUBLIC_URL}/#{method}/#{pair}").body
+      make_hash(response)
     end
 
     def trade_request(method, params=nil)
@@ -19,7 +20,7 @@ module Bter
           @params.merge!(param)
         end
       end
-      HTTParty.post(
+      response = HTTParty.post(
       	"#{TRADE_URL}/#{method}",
         :body => @params,
         :headers => {
@@ -29,12 +30,17 @@ module Bter
           "Accept" => "application/x-www-form-urlencoded"
           }
       ).body
+      make_hash(response)
     end 
 
     def sign
       hmac = OpenSSL::HMAC.new(@secret,OpenSSL::Digest::SHA512.new)
       @params = @params.collect {|k,v| "#{k}=#{v}"}.join('&')
       hmac.update(@params).to_s    
+    end
+
+    def make_hash(json_object)
+      JSON.parse(json_object, {:symbolize_names => true})
     end
   end
 end

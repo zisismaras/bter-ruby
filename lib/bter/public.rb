@@ -8,7 +8,7 @@ module Bter
 
     METHODS.each do |method|
       define_method(method) do |pair=nil, tid=nil|
-        make_hash(public_request(method, pair, tid))
+        public_request(method, pair, tid)
       end  
     end
 
@@ -21,10 +21,5 @@ module Bter
     alias_method :details, :markelist 
     alias_method :trades, :trade
     alias_method :history, :trade 
-
-    private
-    def make_hash(json_object)
-      JSON.parse(json_object, {:symbolize_names => true})
-    end
   end
 end
