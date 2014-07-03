@@ -5,17 +5,19 @@ module Bter
     include Request
   
     attr_accessor :key, :secret
-       
-    def get_info    
-      query = trade_request("getfunds")
-      JSON.parse(query, {:symbolize_names => true})
+    
+    METHODS = ['getfunds', 'orderlist', 'getorder', 'cancelorder', 'mytrades'] 
+
+    METHODS.each do |method|
+      define_method(method) do |param=nil|
+        if param.to_i > 0
+          trade_request(method, [{:order_id => param}])
+        else
+          trade_request(method, [{:pair => param}])
+        end
+      end  
     end
-    
-    def active_orders
-      query = trade_request("orderlist")
-      JSON.parse(query, {:symbolize_names => true})
-    end 
-    
+
     #abstract the trade to buy and sell
     def buy(pair, amount, rate=nil)
       rate ||= get_rate(pair)
@@ -26,21 +28,13 @@ module Bter
       rate ||= get_rate(pair)
       trade({:pair => pair, :type => "SELL", :rate => rate, :amount => amount})
     end
-    
-    def order_status(order_id)
-      query = trade_request("getorder", [{:order_id => order_id}])
-      JSON.parse(query, {:symbolize_names => true})
-    end
-    
-    def cancel_order(order_id)
-      query = trade_request("cancelorder", [{:order_id => order_id}])
-      JSON.parse(query, {:symbolize_names => true})
-    end
-
-    def my_trades(pair)
-      query = trade_request("mytrades", [{:pair => pair}])
-      JSON.parse(query, {:symbolize_names => true})
-    end
+   
+    alias_method :get_info, :getfunds 
+    alias_method :active_orders, :orderlist 
+    alias_method :order_status, :getorder
+    alias_method :cancel_order, :cancelorder
+    alias_method :get_info, :getfunds 
+    alias_method :my_trades, :mytrades    
     
     #soon to be removed
     def logging(log)
@@ -50,7 +44,6 @@ module Bter
     private
     def trade(*params)
       query = trade_request("placeorder", params)
-      JSON.parse(query, {:symbolize_names => true})
     end
 
     def get_rate(pair)
