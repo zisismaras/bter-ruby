@@ -33,13 +33,7 @@ module Bter
     alias_method :active_orders, :orderlist 
     alias_method :order_status, :getorder
     alias_method :cancel_order, :cancelorder
-    alias_method :get_info, :getfunds 
     alias_method :my_trades, :mytrades    
-    
-    #soon to be removed
-    def logging(log)
-      raise "Logger is no longer available , please remove it"
-    end
 
     private
     def trade(*params)

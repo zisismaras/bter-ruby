@@ -12,11 +12,6 @@ module Bter
       end  
     end
 
-    #will be removed soon
-    def logging(log)
-      raise "Logger is no longer available , please remove it"
-    end
-    
     alias_method :info, :marketinfo 
     alias_method :details, :markelist 
     alias_method :trades, :trade
